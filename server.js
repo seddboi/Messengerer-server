@@ -74,7 +74,6 @@ app.post('/login', async (req, res) => {
 
 	console.log(username, password);
 	db.query(`SELECT * FROM users WHERE username = '${username}'`, (err, result) => {
-		console.log(result.rows);
 		if (result.rows.length > 0) {
 			bcrypt.compare(password, result.rows[0].password, async (error, response) => {
 				if (response) {

@@ -5,6 +5,9 @@ const db = require('./Database/db');
 
 const app = express();
 
+const signupRoute = require('./Routes/Signup');
+const loginRoute = require('./Routes/Login');
+
 require('dotenv').config();
 
 app.use(express.json());
@@ -20,9 +23,6 @@ db.connect((err) => {
 	if (err) throw err;
 	console.log('Connected to database!');
 });
-
-const signupRoute = require('./Routes/Signup');
-const loginRoute = require('./Routes/Login');
 
 app.use('/signup', signupRoute);
 app.use('/login', loginRoute);
